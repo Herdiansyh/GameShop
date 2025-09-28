@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { act, useState } from "react";
 // import Swiper and modules styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,7 +10,8 @@ import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 function SwiperGames({ game }) {
   const [active, setActive] = useState(false);
 
-  const handleToggleVideo = () => {
+  const handleToggleVideo = (e) => {
+    e.preventDefault();
     setActive(!active);
   };
   return (
@@ -28,6 +29,9 @@ function SwiperGames({ game }) {
         modifier: 1,
         slideShadows: true,
       }}
+      style={{
+        "--swiper-navigation-color": "#ffffff",
+      }}
       //   autoplay={{
       //     delay: 2500,
       //     disableOnInteraction: false,
@@ -39,7 +43,17 @@ function SwiperGames({ game }) {
         return (
           <SwiperSlide key={games._id}>
             <div className="gameSlider">
-              <img src={games.img} alt="Game image" />
+              <img src={games.img} alt="Game" />
+              <div className={`video ${active ? "active" : ""}`}>
+                <iframe
+                  src={games.trailer}
+                  width="1200"
+                  height="720"
+                  title={games.title}
+                  allow="accelerometer; clipboard-write; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
               <div className="content">
                 <h2>{games.title}</h2>
                 <p>{games.description}</p>
@@ -55,7 +69,7 @@ function SwiperGames({ game }) {
                     <span className="pause">
                       <i className="bi bi-pause-fill"></i>
                     </span>
-                    <span className="paly">
+                    <span className="play">
                       <i className="bi bi-play-fill"></i>
                     </span>
                   </a>

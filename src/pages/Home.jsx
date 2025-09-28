@@ -4,7 +4,7 @@ import SwiperGames from "../components/SwiperGames";
 function Home({ game }) {
   return (
     <>
-      <section id="home" className="home">
+      <section id="home" className="home active">
         <div className="container-fluid">
           <div className="row">
             <SwiperGames game={game} />

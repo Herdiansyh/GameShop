@@ -13,12 +13,12 @@ function Main() {
       .then((res) => res.json())
       .then((res) => {
         setGames(res);
-        console.log(res);
       })
 
       .catch((e) => console.log(e.message));
 
-  const handleToggleActive = () => {
+  const handleToggleActive = (e) => {
+    e.preventDefault();
     setActive(!active);
   };
 
