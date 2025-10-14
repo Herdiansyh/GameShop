@@ -1,9 +1,9 @@
 import React from "react";
 
-function NavListitem({ name, icon }) {
+function NavListitem({ item, name, icon, navOnClick }) {
   return (
     <li>
-      <a href="/">
+      <a href="/" onClick={() => navOnClick(item._id)}>
         <i className={`bi ${icon}`}></i>
         <span className="navName">{name}</span>
       </a>
