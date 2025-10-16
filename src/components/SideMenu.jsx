@@ -4,15 +4,16 @@ import navListData from "../data/navListData";
 import NavListitem from "./NavListitem";
 import NavListSocial from "./NavListSocial";
 
-function SideMenu({ active }) {
+function SideMenu({ active, sectionActive }) {
   const [navData, setNavData] = useState(navListData);
-  const handleNavOnClick = (id) => {
+  const handleNavOnClick = (id, target) => {
     const newNavData = navData.map((nav) => {
       nav.active = false;
       if (nav._id === id) nav.active = true;
       return nav;
     });
     setNavData(newNavData);
+    sectionActive(target);
   };
   return (
     <div className={`sideMenu ${active ? "active" : ""}`}>
