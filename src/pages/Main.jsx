@@ -33,7 +33,7 @@ function Main() {
       active: false,
     },
     {
-      name: "Bag",
+      name: "bag",
       ref: bagRef,
       active: false,
     },
@@ -54,7 +54,11 @@ function Main() {
   };
   const handleSectionActive = (target) => {
     sections.map((section) => {
-      console.log(section.ref.current);
+      section.ref.current.classList.remove("active");
+      if (section.ref.current.id === target) {
+        section.ref.current.classList.add("active");
+      }
+      return section;
     });
   };
 
@@ -69,8 +73,8 @@ function Main() {
         <div className="container-fluid">
           <Home game={games} references={homeRef} />
           <Categories games={games} references={categoriesRef} />
-          <MyLibrary games={games} references={categoriesRef} />
-          <Bag games={games} references={categoriesRef} />
+          <MyLibrary games={games} references={libraryRef} />
+          <Bag games={games} references={bagRef} />
         </div>
       </div>
     </main>
