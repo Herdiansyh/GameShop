@@ -71,7 +71,7 @@ function Main() {
       <div className={`banner ${active ? "active" : ""}`}>
         <Header ToggleActive={handleToggleActive} />
         <div className="container-fluid">
-          <Home game={games} references={homeRef} />
+          <Home games={games} references={homeRef} />
           <Categories games={games} references={categoriesRef} />
           <MyLibrary games={games} references={libraryRef} />
           <Bag games={games} references={bagRef} />
